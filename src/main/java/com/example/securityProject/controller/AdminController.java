@@ -16,12 +16,14 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
+    // Show Role of the User
     @GetMapping("/add-role")
     public String showAddRoleForm(Model model) {
         model.addAttribute("role", new Role());
         return "add-role";
     }
 
+    // Add Role of the User
     @PostMapping("/add-role")
     public String addRole(Role role, Model model) {
         if (roleService.findByName(role.getName()) != null) {

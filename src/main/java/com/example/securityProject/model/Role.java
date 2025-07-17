@@ -10,19 +10,17 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, name = "NAME", unique = true)
     private String name;
 
+    @Column(name = "DESCRIPTION")
     private String description;
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    // Constructors
+    // Empty Role Constructors
     public Role() {}
-
-
-
     public Role(String name, String description) {
         this.name = name;
         this.description = description;

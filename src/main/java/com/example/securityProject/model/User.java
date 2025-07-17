@@ -10,16 +10,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, name = "USERNAME", unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "PASSWORD")
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "FULLNAME")
     private String fullName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "EMAIL")
     private String email;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -29,7 +29,7 @@ public class User {
     )
     private Set<Role> roles;
 
-    // Constructors
+    // Empty User Constructors
     public User() {}
 
     public User(String username, String password, String fullName, String email) {
@@ -38,9 +38,8 @@ public class User {
         this.fullName = fullName;
         this.email = email;
     }
+
     // Getters and Setters
-
-
     public Long getId() {
         return id;
     }
